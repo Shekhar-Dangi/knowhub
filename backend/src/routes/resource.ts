@@ -8,7 +8,6 @@ import {
 const router = express.Router();
 
 router.post("/create", createResource);
-
 router.get("/:fileId", listResources);
 
 export default router;
