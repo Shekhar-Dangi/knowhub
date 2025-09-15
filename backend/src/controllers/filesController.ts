@@ -8,6 +8,13 @@ export const createFile = async (req: Request, res: Response) => {
     return res.status(400).json({ error: "Missing required fields" });
   }
 
+  const fileCount = await prisma.file.count();
+  if (fileCount >= 100) {
+    return res.status(400).json({
+      error: "File limit reached. You cannot create more than 100 files.",
+    });
+  }
+
   const existingFile = await prisma.file.findUnique({
     where: { title: title },
   });

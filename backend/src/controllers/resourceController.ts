@@ -53,6 +53,17 @@ export const createResource = async (req: Request, res: Response) => {
       return res.status(404).json({ error: "File not found" });
     }
 
+    const resourceCount = await prisma.resource.count({
+      where: { fileId: fileId },
+    });
+
+    if (resourceCount >= 100) {
+      return res.status(400).json({
+        error:
+          "Resource limit reached. You cannot create more than 100 resources per file.",
+      });
+    }
+
     const resource = await prisma.resource.create({
       data: {
         content,

@@ -39,6 +39,11 @@ export const FilesProvider: React.FC<FilesProviderProps> = ({ children }) => {
       setLoading(true);
       setError(null);
 
+      // Client-side validation: Check if we're at the file limit
+      if (files.length >= 100) {
+        throw new Error("Maximum file limit reached (100 files). Please delete some files before creating new ones.");
+      }
+
       const response = await fetch(`${API_BASE}/files`, {
         method: "POST",
         headers: {
