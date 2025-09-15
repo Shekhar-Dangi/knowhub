@@ -1,6 +1,5 @@
-build:
-  commands:
-    - npm install
-    - npm run build
-start:
-  command: npm run deploy
+[build]
+command = "npm install && npm run build"
+
+[deploy]
+startCommand = "npm run deploy"
