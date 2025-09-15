@@ -14,7 +14,7 @@ interface NewResourceModalProps {
   onOpenChange: (open: boolean) => void;
   onAddResource: (content: string) => Promise<boolean>;
   fileName: string;
-  currentResourceCount: number;
+  currentResourceCount?: number;
 }
 
 export const NewResourceModal: React.FC<NewResourceModalProps> = ({
@@ -22,7 +22,6 @@ export const NewResourceModal: React.FC<NewResourceModalProps> = ({
   onOpenChange,
   onAddResource,
   fileName,
-  currentResourceCount,
 }) => {
   const [content, setContent] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -91,7 +90,7 @@ export const NewResourceModal: React.FC<NewResourceModalProps> = ({
           <DialogTitle>Add New Resource</DialogTitle>
           <DialogDescription>
             Add a new resource to "{fileName}". This could be notes, links, code
-            snippets, or any other content. ({currentResourceCount}/100 resources)
+            snippets, or any other content.
           </DialogDescription>
         </DialogHeader>
 

@@ -148,6 +148,7 @@ export const FileDetail: React.FC<FileDetailProps> = ({ file, onBack }) => {
         onOpenChange={setIsAddingResource}
         onAddResource={handleAddResource}
         fileName={file.title}
+        currentResourceCount={resources.length}
       />
     </div>
   );
