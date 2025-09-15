@@ -15,7 +15,7 @@ datasource db {
 
 model File {
   id        String     @id @default(uuid())
-  title     String
+  title     String     @unique
   resources Resource[]
 }
 
